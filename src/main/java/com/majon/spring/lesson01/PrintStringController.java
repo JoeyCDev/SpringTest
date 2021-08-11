@@ -24,7 +24,7 @@ public class PrintStringController {
 	@ResponseBody
 	@RequestMapping("/2")
 	public Map<String,Integer> printMap(){
-		Map<String,Integer> map = new HashMap<>();
+		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("국어", 80);
 		map.put("수학", 90);
 		map.put("영어", 85);
