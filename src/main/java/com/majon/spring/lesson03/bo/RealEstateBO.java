@@ -36,5 +36,19 @@ public class RealEstateBO {
 		return realEstateDAO.selectRealEstateListMultipleParam(area, Price);
 		
 	}
+	
+	// 1.
+	
+	public int addRealEstateAsObject(RealEstate realEstate) {
+		return realEstateDAO.insertRealEstateAsObject(realEstate);
+	}
+	
+	// 2.
+	
+	public int addRealEstate(int id, String address, int area, String type, int price, int rentPrice) {
+		
+		return realEstateDAO.insertRealEstate(id, address, area, type, price, rentPrice);
+		
+	}
 
 }

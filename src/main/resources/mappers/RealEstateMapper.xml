@@ -62,5 +62,59 @@
  			`area` <![CDATA[>=]]> #{area}
  		AND
  			`price`<![CDATA[<=]]> #{price}
+ 		ORDER BY `id` DESC
  	</select>
+ 	
+ 	<!-- 1. -->
+ 	<insert id="insertRealEstateAsObject" parameterType="com.majon.spring.lesson03.model.RealEstate">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(
+ 			`realtorId`
+ 			,`address`
+ 			,`area`
+ 			,`type`
+ 			,`price`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{realtorId}
+ 			,#{address}
+ 			,#{area}
+ 			,#{type}
+ 			,#{price}
+ 			,now()
+ 			,now()
+ 		)
+ 	</insert>
+ 	
+ 	<!-- 2. -->
+ 	
+ 	<insert id ="insertRealEstate" parameterType="map">
+	 	INSERT INTO
+	 			`real_estate`
+	 		(
+	 			`realtorId`
+	 			,`address`
+	 			,`area`
+	 			,`type`
+	 			,`price`
+	 			,`rentPrice`
+	 			,`createdAt`
+	 			,`updatedAt`
+	 		)
+	 		VALUES
+	 		(
+	 			#{realtorId}
+	 			,#{address}
+	 			,#{area}
+	 			,#{type}
+	 			,#{price}
+	 			,#{rentPrice}
+	 			,now()
+	 			,now()
+	 		)
+ 	</insert>
  </mapper>
