@@ -22,6 +22,15 @@ public interface RealEstateDAO {
 	
 	// 2.
 	
-	public int insertRealEstate(@Param("realtorId") int id, @Param("address")String address, @Param("area") int area, @Param("type") String type, @Param("price") int price, @Param("rentPrice") int rentPrice);
+	public int insertRealEstate(@Param("realtorId") int id, @Param("address")String address, 
+			@Param("area") int area, @Param("type") String type, @Param("price") int price, @Param("rentPrice") int rentPrice);
+	// 3.
+	
+	public int updateRealEstate(@Param("id") int id, @Param("type") String type, @Param("price") int price);
 
+	// 4.
+	
+	public int deleteRealEstate(@Param("id") int id);
 }
+
+

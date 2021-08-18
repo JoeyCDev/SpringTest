@@ -71,6 +71,30 @@ public class RealEstateController {
 		return "입력 성공 : " + count;
 	}
 	
+	// 3. UPDATE 다루기
+	
+	@RequestMapping("lesson03/test03")
+	@ResponseBody
+	public String printUpdateResult(@RequestParam("id") int id, @RequestParam("type") String type, @RequestParam("price") int price) {
+		
+		int count = realEstateBO.updateRealEstate(id, type, price);
+		
+		return "수정 성공 : " + count;
+		
+	}
+	
+	// 4. DELETE 다루기
+	
+	@RequestMapping("lesson03/test04")
+	@ResponseBody
+	public String printDeleteResult(@RequestParam("id") int id) {
+		
+		int count = realEstateBO.deleteRealEstate(id);
+		
+		return "삭제 성공 : " + count;
+		
+	}
+	
 	}
 	
 	
