@@ -30,9 +30,9 @@ public class SellerBO {
 	
 	// 3.
 	
-	public Seller selectLastSellerBySearch(int id) {
+	public Seller selectSellerBySearch(int id) {
 		
-		return sellerDAO.selectLastSellerBySearch(id);
+		return sellerDAO.selectSellerBySearch(id);
 		
 	}
 

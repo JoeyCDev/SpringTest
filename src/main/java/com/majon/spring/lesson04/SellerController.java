@@ -62,9 +62,9 @@ public class SellerController {
 					model.addAttribute("result", lastSeller);
 					model.addAttribute("subject", "판매자 정보");
 				} else {
-					Seller lastSeller = sellerBO.selectLastSellerBySearch(id);
+					Seller seller = sellerBO.selectSellerBySearch(id);
 					
-					model.addAttribute("result", lastSeller);
+					model.addAttribute("result", seller);
 					model.addAttribute("subject", "판매자 정보");
 				}
 				

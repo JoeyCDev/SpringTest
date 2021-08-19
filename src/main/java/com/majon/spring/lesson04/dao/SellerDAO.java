@@ -14,5 +14,5 @@ public interface SellerDAO {
 	public Seller selectLastSeller();
 	
 	// 3.
-	public Seller selectLastSellerBySearch(@Param("id") int id);
+	public Seller selectSellerBySearch(@Param("id") int id);
 }

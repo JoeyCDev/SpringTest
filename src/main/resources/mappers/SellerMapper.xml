@@ -13,6 +13,7 @@
  		`nickname`
  		,`profileImageUrl`
  		,`temperature`
+ 		,`createdAt`
  		,`updatedAt`
  		)
  		VALUES
@@ -20,6 +21,7 @@
  		#{nickname}
  		,#{profileImageUrl}
  		,#{temperature}
+ 		,now()
  		,now()
  		)
  	</insert>
@@ -43,7 +45,7 @@
  	</select>
  	
  	<!--  3. -->
- 	<select id="selectLastSellerBySearch" resultType="com.majon.spring.lesson04.model.Seller">
+ 	<select id="selectSellerBySearch" resultType="com.majon.spring.lesson04.model.Seller">
  		SELECT
  			`id`
  			,`nickname`
