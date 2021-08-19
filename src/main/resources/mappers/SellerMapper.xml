@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.majon.spring.lesson04.dao.SellerDAO">
+ 
+ 	<!-- 1. -->
+ 	<insert id="insertLastSeller" parameterType="map">
+ 		INSERT INTO
+ 			`seller`
+ 		(
+ 		`nickname`
+ 		,`profileImageUrl`
+ 		,`temperature`
+ 		,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 		#{nickname}
+ 		,#{profileImageUrl}
+ 		,#{temperature}
+ 		,now()
+ 		)
+ 	</insert>
+ 	
+ 	<!-- 2. -->
+ 	<select id="selectLastSeller" resultType="com.majon.spring.lesson04.model.Seller">
+ 		SELECT
+ 			`id`
+ 			,`nickname`
+ 			,`profileImageUrl`
+ 			,`temperature`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`seller`
+ 		ORDER BY 
+ 			`id` 
+ 		DESC
+ 		LIMIT 1;
+ 	
+ 	</select>
+ 	
+ 	<!--  3. -->
+ 	<select id="selectLastSellerBySearch" resultType="com.majon.spring.lesson04.model.Seller">
+ 		SELECT
+ 			`id`
+ 			,`nickname`
+ 			,`profileImageUrl`
+ 			,`temperature`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`seller`
+ 		WHERE
+ 			`id` = #{id}
+ 	</select>
+ 
+ </mapper>
