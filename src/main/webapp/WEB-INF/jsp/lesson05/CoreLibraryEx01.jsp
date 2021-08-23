@@ -27,11 +27,12 @@
 	<h4><c:out value="<title>core out</title>"></c:out></h4>
 	
 	<h3>4. JSTL core if</h3>
-	<c:if test="${ (number1+number2)/2 >= 10}">
-		<h1>${ (number1+number2)/2}</h1>
+	<c:set var="average" value="${ (number1+number2)/2 }"/>
+	<c:if test="${ average >= 10}">
+		<h1>${ average}</h1>
 	</c:if>
-	<c:if test="${ (number1+number2)/2 < 10}">
-		<h3>${ (number1+number2)/2}</h3>
+	<c:if test="${ average < 10}">
+		<h3>${ average}</h3>
 	</c:if>
 	
 	<h3>5. core if</h3>
