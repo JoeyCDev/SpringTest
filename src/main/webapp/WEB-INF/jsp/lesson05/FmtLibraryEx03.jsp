@@ -54,7 +54,8 @@
 		<c:forEach var="cardBill" items="${cardBills }" varStatus="status">
 			<tr>
 				<td>${cardBill.store }</td>
-				<td> <fmt:formatNumber value="${cardBill.pay }" type="currency" currencySymbol="₩"/></td>
+				<td><fmt:setLocale value="ko_KR"  scope="session"/>
+				<fmt:formatNumber value="${cardBill.pay }" type="currency"/></td>
 				<td><fmt:parseDate value="${cardBill.date }" pattern="yyyy-MM-dd" var="date"/>
 					<fmt:formatDate value="${date }" pattern="yyyy년 M월 dd일"/> </td>
 				<td>${cardBill.installment }</td>
