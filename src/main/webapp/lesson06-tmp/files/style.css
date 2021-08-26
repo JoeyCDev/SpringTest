@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#Wrap{
+	
+	height:900px;
+	
+}
+
+.main-table{
+	
+	width:1300px;
+}
+
+.footer{
+	height:100px;
+}
+
+.footer-logo{
+	width:300px;
+}
+
+.footer-logo-img{
+	height:100px;
+}
+
+#wrap2{
+	height:400px;
+}

@@ -18,5 +18,33 @@
  			`weatherhistory`
  	
  	</select>
+ 	
+ 	<insert id="insertWeatherHistory" parameterType="com.majon.spring.lesson06.model.WeatherHistory">
+ 		INSERT INTO
+ 			`weatherhistory`
+ 			(
+	 			`date`
+	 			,`weather`
+	 			,`temperatures`
+	 			,`precipitation`
+	 			,`microDust`
+	 			,`windSpeed`
+	 			,`createdAt`
+	 			,`updatedAt`
+ 			)
+ 		VALUES
+ 			(
+ 				#{date}
+ 				,#{weather}
+ 				,#{temperatures}
+ 				,#{precipitation}
+ 				,#{microDust}
+ 				,#{windSpeed}
+ 				,now()
+ 				,now()
+ 			)
+ 			
+ 
+ 	</insert>
  
  </mapper>
