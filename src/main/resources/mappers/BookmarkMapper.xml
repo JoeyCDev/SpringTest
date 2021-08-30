@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.majon.spring.lesson07.dao.BookmarkDAO">
+ 	<insert id="insertBookmark">
+ 		
+ 		INSERT INTO
+ 			`bookmark`
+ 		(
+ 			`name`
+ 			,`url`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		) VALUES(
+			#{name}
+			,#{url}
+			,now()
+			,now() 		
+ 		
+ 		)
+ 		
+ 	</insert>
+ 	
+ 	<select id="selectBookmarkList" resultType="com.majon.spring.lesson07.model.Bookmark">
+ 		SELECT
+ 			`id`
+ 			,`name`
+ 			,`url`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`bookmark`
+ 	</select>
+ 
+ </mapper>

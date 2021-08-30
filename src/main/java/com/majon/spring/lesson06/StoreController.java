@@ -18,6 +18,7 @@ public class StoreController {
 
 	@Autowired
 	private StoreBO storeBO;
+	@Autowired
 	private NewReviewBO newReviewBO;
 	
 	@GetMapping("/lesson06/test06/stores")

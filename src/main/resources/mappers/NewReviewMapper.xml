@@ -17,7 +17,7 @@
  			,`createdAt`
  			,`updatedAt`
  		FROM
- 			`new_reivew`
+ 			`new_review`
  		WHERE
  			`storeId` = #{storeId}
  		ORDER BY
