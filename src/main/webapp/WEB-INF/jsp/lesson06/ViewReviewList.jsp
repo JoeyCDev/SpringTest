@@ -20,34 +20,33 @@
 		<div class="main-container" style="margin:auto; width:50%">
 			<jsp:include page="header.jsp"/>
 			<h1>${storeName } - 리뷰</h1>
-			<c:forEach var="review" items="${storeReview }">
-				<c:choose>
-					<c:when test="${review.storeId eq null }">
-						<div class="m-3 display-4">작성된 리뷰가 없습니다.</div>
+			<c:choose>
+					<c:when test="${empty storeReview }">
+						<div class="m-5 display-4">작성된 리뷰가 없습니다.</div>
 					</c:when>
-					<c:when test="${review.storeId ne null }">
-						<div class="list-items border border-info rounded p-3 mb-3">
-							<div class="d-flex align-items-center">
-								<b>${review.userName }</b> 
-								<c:forEach var="i" begin="1" end="${review.point }" step="1">
-									<img src="/lesson06-tmp/images/star_fill.png" width="15px" class="ml-1"/>
-								</c:forEach>
-								<c:if test="${review.point%1==0.5 }">
-									<img src="/lesson06-tmp/images/star_half.png" width="15px" class="ml-1"/>
-								</c:if>
-								<c:forEach var="i" begin="1" end="${5-review.point }" step="1">
-									<img src="/lesson06-tmp/images/star_empty.png" width="15px" class="ml-1"/>
-								</c:forEach>
-							</div>
-							<br>
-							<small class="text-secondary"><fmt:formatDate value="${review.createdAt }" pattern="yyyy년 M월 d일"/></small>
-							<br>
-							<div>${review.review }</div>
-							<samll class="bg-secondary rounded">${review.menu }</small>
-						</div>
+					<c:when test="${!empty storeReview }">
+						<c:forEach var="review" items="${storeReview }">
+									<div class="list-items border border-info rounded p-3 mb-3">
+										<div class="d-flex align-items-center">
+											<b>${review.userName }</b> 
+											<c:forEach var="i" begin="1" end="${review.point }" step="1">
+												<img src="/lesson06-tmp/images/star_fill.png" width="15px" class="ml-1"/>
+											</c:forEach>
+											<c:if test="${review.point%1==0.5 }">
+												<img src="/lesson06-tmp/images/star_half.png" width="15px" class="ml-1"/>
+											</c:if>
+											<c:forEach var="i" begin="1" end="${5-review.point }" step="1">
+												<img src="/lesson06-tmp/images/star_empty.png" width="15px" class="ml-1"/>
+											</c:forEach>
+										</div>
+										<small class="text-secondary"><fmt:formatDate value="${review.createdAt }" pattern="yyyy년 M월 d일"/></small>
+										<br>
+										<div class="mb-2">${review.review }</div>
+										<samll class="bg-secondary rounded p-1">${review.menu }</small>
+									</div>
+						</c:forEach>
 					</c:when>
-				</c:choose>
-			</c:forEach>
+			</c:choose>
 			<hr>
 		<jsp:include page="footer.jsp"/>
 		</div>
