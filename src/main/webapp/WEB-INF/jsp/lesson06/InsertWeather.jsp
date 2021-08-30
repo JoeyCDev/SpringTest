@@ -45,21 +45,21 @@
 					</div>
 				</div>
 				<div class="d-flex d-wrap">
-					<div class="input-group  m-4">
+					<div class="input-group m-4">
 						<label class="mr-2">기온 </label>
 						<input type="text" class="form-control" name="temperatures">
 						<div class="input-group-append">
 							<span class="input-group-text">°C</span>
 						</div>
 					</div>
-					<div class="input-group  m-4">
+					<div class="input-group m-4">
 						<label class="mr-2">강수량 </label>
 						<input type="text" class="form-control" name="precipitation">
 						<div class="input-group-append">
 							<span class="input-group-text">mm</span>
 						</div>
 					</div>
-					<div class="input-group  m-4">
+					<div class="input-group m-4">
 						<label class="mr-2">풍속 </label>
 						<input type="text" class="form-control" name="windSpeed">
 						<div class="input-group-append">

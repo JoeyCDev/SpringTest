@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.majon.spring.lesson06.dao.NewReviewDAO">
+ 
+ 	<select id="selectReview" resultType="com.majon.spring.lesson06.model.NewReview">
+ 	
+ 		SELECT
+ 			`id`
+ 			,`storeId`
+ 			,`menu`
+ 			,`userName`
+ 			,`point`
+ 			,`review`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`new_reivew`
+ 		WHERE
+ 			`storeId` = #{storeId}
+ 		ORDER BY
+ 			`createdAt` DESC;
+ 	</select>
+ </mapper>

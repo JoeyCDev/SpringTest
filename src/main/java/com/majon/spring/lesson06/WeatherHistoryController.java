@@ -41,10 +41,10 @@ public class WeatherHistoryController {
 	}
 	
 	@GetMapping("example1/insertResult")
-	@ResponseBody
 		public String printInsertResult(@RequestParam("date")String date, @RequestParam("weather") String weather
 										,@RequestParam("microDust")String microDust, @RequestParam("temperatures") double temperatures
-										,@RequestParam("precipitation")double precipitation, @RequestParam("windSpeed")double windSpeed) throws ParseException {
+										,@RequestParam("precipitation")double precipitation, @RequestParam("windSpeed")double windSpeed
+										,Model model) throws ParseException {
 		
 			Date date1 = new SimpleDateFormat("yyyy-mm-dd").parse(date);  
 			WeatherHistory weatherHistory = new WeatherHistory();
@@ -55,9 +55,12 @@ public class WeatherHistoryController {
 				weatherHistory.setPrecipitation(precipitation);
 				weatherHistory.setWindSpeed(windSpeed);
 				
-			int count = weatherHistoryBO.insertWeatherHistory(weatherHistory);
-		
-		return "입력성공 " + count;
+			weatherHistoryBO.insertWeatherHistory(weatherHistory);
+			
+//			List<WeatherHistory> weatherHistories =  weatherHistoryBO.selectWeatherHistory();
+//			model.addAttribute("weatherHistories", weatherHistories);
+//			
+		return "redirect:/lesson06/example1";
 	}
 	
 }
