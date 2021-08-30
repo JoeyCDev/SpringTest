@@ -22,10 +22,10 @@
 			<h1>${storeName } - 리뷰</h1>
 			<c:forEach var="review" items="${storeReview }">
 				<c:choose>
-					<c:when test="${review eq null }">
+					<c:when test="${review.storeId eq null }">
 						<div class="m-3 display-4">작성된 리뷰가 없습니다.</div>
 					</c:when>
-					<c:when test="${review ne null }">
+					<c:when test="${review.storeId ne null }">
 						<div class="list-items border border-info rounded p-3 mb-3">
 							<div class="d-flex align-items-center">
 								<b>${review.userName }</b> 
