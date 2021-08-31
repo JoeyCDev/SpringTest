@@ -14,4 +14,6 @@ public interface BookmarkDAO {
 	
 	
 	public List<Bookmark> selectBookmarkList();
+	
+	public int countDuplicate(@Param("url")String url);
 }

@@ -58,4 +58,23 @@ public class BookMarkController {
 		return"/lesson07/BookmarkList";
 	}
 	
+	@PostMapping("/isDuplicate")
+	@ResponseBody
+	public Map<String,Boolean> isDuplicate(@RequestParam("url") String url){
+		
+		Boolean bool = bookmarkBO.isDuplicate(url);
+		
+		Map<String,Boolean> result = new HashMap<>();
+		
+		if(bool) {
+			result.put("isDuplicate", true);
+		}else {
+			result.put("isDuplicate", false);
+		}
+		
+		return result;
+		
+		
+	}
+	
 }

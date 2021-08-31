@@ -33,5 +33,16 @@
  		FROM
  			`bookmark`
  	</select>
+ 	
+ 	<select id="countDuplicate" resultType="int">
+ 	
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`bookmark`
+ 		WHERE
+ 			`url`= #{url}
+ 	
+ 	</select>
  
  </mapper>

@@ -21,5 +21,12 @@ public class BookmarkBO {
 	public List<Bookmark> selectBookmarkList(){
 		return bookmarkDAO.selectBookmarkList();
 	}
+	
+	public boolean isDuplicate(String url) {
+		
+		int count = bookmarkDAO.countDuplicate(url);
+		
+		return (count>=1);
+	}
 
 }
