@@ -44,5 +44,14 @@
  			`url`= #{url}
  	
  	</select>
+ 	
+ 	<delete id="deleteUrl" parameterType="String">
+ 	
+ 		DELETE FROM
+ 			`bookmark`
+ 		WHERE
+ 			`url` = ${url}
+ 	
+ 	</delete>
  
  </mapper>

@@ -33,7 +33,7 @@
 						<td>${status.count }</td>
 						<td>${bookmark.name }</td>
 						<td><a href="${bookmark.url }">${bookmark.url }</a></td>
-						<td><button class="btn btn-danger" id="deleteBtn">삭제</button></td>
+						<td><input type="button" class="btn btn-danger" id="deleteBtn" value="삭제" name="${bookmark.url }"></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -43,7 +43,29 @@
 	<script>
 		$(document).ready(function(){
 			
-			var name = 
+			var url = $("#deleteBtn").val();
+			
+			$("#deleteBtn").on("click",function(){
+				
+				$.ajax({
+				
+					type:"get",
+					url:"deleteUrl",
+					data:{"url":url},
+					success:function(data){
+						if(data.result=="success"){
+							location.href="/lesson07/print_bookmark_view";
+						}else{
+							alert("삭제 실패!");
+						}
+							
+						
+					},
+					error:function(e){
+						alert("error");
+					}
+					
+				});
 			
 		});
 	</script>

@@ -73,7 +73,24 @@ public class BookMarkController {
 		}
 		
 		return result;
+	
+	}
+	
+	@GetMapping("/deleteUrl")
+	@ResponseBody
+	public Map<String,String> deleteUrl(@RequestParam("url") String url){
 		
+		Map<String,String> result = new HashMap<>();
+
+		int count = bookmarkBO.deleteUrl(url);
+		
+		if(count>=1) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
 		
 	}
 	
