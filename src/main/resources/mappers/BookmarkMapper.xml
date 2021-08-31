@@ -45,12 +45,12 @@
  	
  	</select>
  	
- 	<delete id="deleteUrl" parameterType="String">
+ 	<delete id="deleteUrl" parameterType="int">
  	
  		DELETE FROM
  			`bookmark`
  		WHERE
- 			`url` = ${url}
+ 			`id` = #{id}
  	
  	</delete>
  

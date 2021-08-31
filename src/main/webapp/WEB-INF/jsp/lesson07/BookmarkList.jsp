@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 						<td>${status.count }</td>
 						<td>${bookmark.name }</td>
 						<td><a href="${bookmark.url }">${bookmark.url }</a></td>
-						<td><input type="button" class="btn btn-danger" id="deleteBtn" value="삭제" name="${bookmark.url }"></td>
+						<td><button type="button" class="btn btn-danger deleteBtn" data-bookmark-id=${bookmark.id }>삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -43,15 +44,17 @@
 	<script>
 		$(document).ready(function(){
 			
-			var url = $("#deleteBtn").val();
+			$(".deleteBtn").on("click",function(){
+				
 			
-			$("#deleteBtn").on("click",function(){
+				//지금 이벤트가 발생한 객체
+				var bookmarkId = $(this).data("bookmark-id");
 				
 				$.ajax({
 				
 					type:"get",
-					url:"deleteUrl",
-					data:{"url":url},
+					url:"/lesson07/deleteUrl",
+					data:{"bookmarkId":bookmarkId},
 					success:function(data){
 						if(data.result=="success"){
 							location.href="/lesson07/print_bookmark_view";

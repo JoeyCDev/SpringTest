@@ -17,6 +17,6 @@ public interface BookmarkDAO {
 	
 	public int countDuplicate(@Param("url")String url);
 	
-	public int deleteUrl(@Param("url")String url);
+	public int deleteUrl(@Param("id") int id);
 	
 }

@@ -97,17 +97,16 @@
 					return;
 				}
 				
-				if(isChecked==false){
+				if(!isChecked){
 					alert("중복체크를 진행해 주세요!");
 					return;
 				}
 				
-				if(isDuplicate == true){
+				if(isDuplicate){
 					alert("중복된 이름은 등록 불가합니다!");
 					return;
 				}
 				
-				if()
 				
 				$.ajax({
 					type:"post",

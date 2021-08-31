@@ -29,8 +29,8 @@ public class BookmarkBO {
 		return (count>=1);
 	}
 	
-	public int deleteUrl(String url) {
-		return bookmarkDAO.deleteUrl(url);
+	public int deleteUrl(int id) {
+		return bookmarkDAO.deleteUrl(id);
 	}
 
 }
