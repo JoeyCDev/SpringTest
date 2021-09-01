@@ -1,0 +1,75 @@
+package com.majon.spring.lesson08;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.majon.spring.lesson08.bo.BookingBO;
+import com.majon.spring.lesson08.model.Booking;
+
+@Controller
+@RequestMapping("/lesson08")
+public class BookingController {
+
+	@Autowired
+	private BookingBO bookingBO;
+	
+	@GetMapping("/view_booking_main")
+	public String viewBookingMain() {
+		
+		return "/lesson08/BookingMain";
+		
+	}
+	
+	@GetMapping("/view_booking_list")
+	public String viewBookingList(Model model) {
+		
+		List<Booking>bookingList = bookingBO.selectBookingList();
+		
+		model.addAttribute("bookingList", bookingList);
+		
+		return "/lesson08/ViewBookingList";
+		
+	}
+	
+	@GetMapping("/view_booking_page")
+	public String viewBookingPage() {
+			
+		return "/lesson08/ViewBookingPage";
+	}
+	
+	@PostMapping("/validation_check")
+	public Map<String,String> validationCheck(
+			@RequestParam("name")String name,
+			@RequestParam("date")Date date,
+			@RequestParam("day")int day,
+			@RequestParam("headcount")int headcount,
+			@RequestParam("phoneNumber")String phoneNumber
+			){
+		
+		int count = bookingBO.addBooking(name, date, day, headcount, phoneNumber);
+		
+		Map<String,String> result = new HashMap<>();
+		
+		if(count==1) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+		
+				
+	}
+	
+	
+}

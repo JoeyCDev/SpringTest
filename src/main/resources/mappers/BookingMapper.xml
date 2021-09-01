@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.majon.spring.lesson08.dao.BookingDAO">
+ 
+ 	<select id="selectBookingList" resultType="com.majon.spring.lesson08.model.Booking">
+ 	
+ 		SELECT
+ 			`id`
+ 			,`name`
+ 			,`headcount`
+ 			,`day`
+ 			,`date`
+ 			,`phoneNumber`
+ 			,`state`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`booking`
+ 	
+ 	</select>
+ 	
+ 	<insert id="addBooking" parameterType="map">
+ 	
+ 		INSERT INTO
+ 			`booking`
+ 			(
+ 				`name`
+ 				,`headcount`
+ 				,`day`
+ 				,`date`
+ 				,`phoneNumber`
+ 				,`createdAt`
+ 				,`updatedAt`
+ 			)VALUES
+ 			(
+ 				#{name}
+ 				,#{headcount}
+ 				,#{day}
+ 				,#{date}
+ 				,#{phoneNumber}
+ 				,now()
+ 				,now()
+ 			
+ 			)
+ 			
+ 	
+ 	</insert>
+ 
+ </mapper>
