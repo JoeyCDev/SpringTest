@@ -115,7 +115,6 @@ public class BookingController {
 
 
 
-		출처: https://nota.tistory.com/50 [nota's story]
 		
 		if(bool) {
 			result.put("name", booking.getName());
