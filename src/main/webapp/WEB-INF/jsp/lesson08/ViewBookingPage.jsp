@@ -42,7 +42,7 @@
             		</div>
             		<div class="label-input mb-3">
             		<label>예약날짜</label>
-            		<input type="date" name="date" id="dateInput" class="form-control">
+            		<input type="date" id="dateInput" class="form-control">
             		</div>
             		<div class="label-input mb-3">
             		<label>숙박일수</label>
@@ -73,10 +73,12 @@
     		$("#bookingBtn").on("click",function(){
     			
     			var name = $("#nameInput").val();
-        		var date = $("#dateInput").val();
+        		var date = new Date($("#dateInput").val());
         		var day = $("#dayInput").val();
         		var headcount = $("#headcountInput").val();
         		var phoneNumber = $("#phoneNumberInput").val();
+        		
+        		alert(date);
     			
     			if(name==null||name==""){
     				alert("이름을 입력하세요");
