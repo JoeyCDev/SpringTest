@@ -42,7 +42,7 @@
             		</div>
             		<div class="label-input mb-3">
             		<label>예약날짜</label>
-            		<input type="date" id="dateInput" class="form-control">
+            		<input type="date"  id="datepicker" <%-- id="dateInput" --%> class="form-control">
             		</div>
             		<div class="label-input mb-3">
             		<label>숙박일수</label>
@@ -68,7 +68,10 @@
     	
     	$(document).ready(function(){
     		
-    	
+    		$("#datepicker").datepicker({
+    			dateFormat:"yy-mm-dd",
+    			minDate:0
+    		});
     		
     		$("#bookingBtn").on("click",function(){
     			
@@ -78,7 +81,7 @@
         		var headcount = $("#headcountInput").val();
         		var phoneNumber = $("#phoneNumberInput").val();
         		
-        		alert(date);
+    
     			
     			if(name==null||name==""){
     				alert("이름을 입력하세요");
@@ -108,7 +111,7 @@
     				data:{"name":name, "date":date, "day":day, "headcount":headcount,"phoneNumber":phoneNumber},
     				success:function(data){
     					if(data.result=="success"){
-    						alert("예약 완료 되었습니다");
+    						location.href= "/lesson08/view_booking_list";
     					}else{
     						alert("예약 실패!");
     					}

@@ -25,4 +25,25 @@ public class BookingBO {
 		return bookingDAO.addBooking(name, date, day, headcount, phoneNumber);
 	}
 	
+	public int deleteBooking(int id) {
+		
+		return bookingDAO.deleteBooking(id);
+	}
+	
+	public boolean doesExists(String name, String phoneNumber) {
+		
+		if(bookingDAO.countExistingBooking(name, phoneNumber)>=1) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	public Booking getExistingBooking(String name, String phoneNumber) {
+		
+		return bookingDAO.selectExistingBooking(name, phoneNumber);
+		
+	}
+	
 }

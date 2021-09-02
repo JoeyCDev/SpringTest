@@ -36,35 +36,16 @@
                         <div class="d-flex align-items-end">
                             <h3 class="mr-4">예약 확인</h3>
                         
-                            <label>회원
-                            <input type="radio" name="type" value='member' checked></label>
-                            <label class="ml-3">비 회원
-                            <input type="radio" name="type" value="nonMemeber"></label>
+                            
                         </div>
                         <div class="member-input mt-3" id="member">
                             <div class="input-gorup form-inline">
-                                <label class="input-label">아이디 :</label>
-                                <input type="text" class="form-control text-input" id="id">
-                            </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">비밀번호 :</label>
-                                <input type="password" class="form-control text-input" id="password">
-                            </div>
-
-                        </div>
-
-                        <div class="no-member-input mt-3 d-none" id="nonMember">
-                            <div class="input-gorup form-inline">
-                                <label class="input-label">이름 </label>
+                                <label class="input-label">이름 :</label>
                                 <input type="text" class="form-control text-input" id="name">
                             </div>
                             <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">전화번호 </label>
+                                <label class="input-label">전화번호 :</label>
                                 <input type="text" class="form-control text-input" id="phoneNumber">
-                            </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">날짜 </label>
-                                <input type="text" class="form-control text-input" id="date">
                             </div>
 
                         </div>
@@ -90,78 +71,53 @@
     <script>
         $(document).ready(function() {
 
-            // 데이트 피커 셋팅
-            $( "#date" ).datepicker({
-                minDate:0, 
-                dateFormat: "yy년 m월 d일",
-            });
+           $("#lookupBtn").on("click",function(){
+        	  
+        	   var name = $("#name").val();
+        	   var phoneNumber = $("#phoneNumber").val();
+        	   
+        	   $.ajax({
+        		  
+        		   type:"post",
+        		   url:"/lesson08/lookup",
+        		   data:{"name":name,"phoneNumber":phoneNumber},
+        		   success:function(data){
+        			   if(data.result!="fail"){
+        				   alert(
+        						   "이름 : " + data.name + "\n"
+        						   + "날짜 : " + data.date + "\n"	
+        						   + "일수 : " + data.day + "\n"
+        						   + "인원 : " + data.headcount + "\n"
+        						   + "상태 : " + data.state
+        				   		);
+        			   }else{
+        				   alert("조회 결과가 없습니다");
+        			   }
+        		   },
+        		   error:function(e){
+        			   alert("error");
+        		   }
+        		   
+        	   });
+        	
+        	   
+           });
+           
+		           var bannerList = ["/lesson08-tmp/images/test06_banner1.jpg", "/lesson08-tmp/images/test06_banner2.jpg", "/lesson08-tmp/images/test06_banner3.jpg", "/lesson08-tmp/images/test06_banner4.jpg"];
+		           var currentImageIndex = 0;
+		           setInterval(function() {
+		               $("#bannerImage").attr("src", bannerList[currentImageIndex]);
+		               currentImageIndex++;
+		
+		               if(currentImageIndex == bannerList.length) {
+		                   currentImageIndex = 0;
+		               }
+		           }, 3000); 
+		      
+		           
+         });
 
-            // 라디오 버튼 선택에 따른 인풋 변경
-            $("input[name=type]").on('change', function() {
-                if($(this).val() == 'member') {
-                    $("#member").removeClass("d-none");
-                    $("#nonMember").addClass("d-none");
-                } else {
-                    $("#nonMember").removeClass("d-none");
-                    $("#member").addClass("d-none");
-                }
-            });
-
-            $("#lookupBtn").on('click', function() {
-                if($("input[name=type]:checked").val() == "member") {
-
-                    // 회원 입력 항목 유효성 검사 
-                    if($("#id").val() == '')   {
-                        alert("아이디를 입력하세요.");
-                        return;
-                    }
-
-                    if($("#password").val() == '')   {
-                        alert("비밀번호를 입력하세요.");
-                        return;
-                    }
-
-                    alert("조회 성공");
-
-                } else {
-
-                    // 비 회원 입력 항목 유효성 검사 
-                    if($("#name").val() == '')   {
-                        alert("이름을 입력하세요.");
-                        return;
-                    }
-
-                    if($("#phoneNumber").val() == '')   {
-                        alert("전화번호를 입력하세요.");
-                        return;
-                    }
-
-                    // 010 으로 시작하는 것만 통과
-                    if(!$("#phoneNumber").val().startsWith("010"))   {
-                        alert("010 으로 시작하는 번호만 입력가능합니다. ");
-                        return;
-                    }
-
-                    if($("#date").val() == '')   {
-                        alert("날짜를 입력하세요.");
-                        return;
-                    }
-
-                    alert("조회 성공");
-                }
-            });
-
-            var bannerList = ["/lesson08-tmp/images/test06_banner1.jpg", "/lesson08-tmp/images/test06_banner2.jpg", "/lesson08-tmp/images/test06_banner3.jpg", "/lesson08-tmp/images/test06_banner4.jpg"];
-            var currentImageIndex = 0;
-            setInterval(function() {
-                $("#bannerImage").attr("src", bannerList[currentImageIndex]);
-                currentImageIndex++;
-
-                if(currentImageIndex == bannerList.length) {
-                    currentImageIndex = 0;
-                }
-            }, 3000); 
-        } );
+            
     </script>
     </body>
 </html>

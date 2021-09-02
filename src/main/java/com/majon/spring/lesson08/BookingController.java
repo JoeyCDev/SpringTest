@@ -1,5 +1,8 @@
 package com.majon.spring.lesson08;
 
+import static org.assertj.core.api.Assertions.from;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.majon.spring.lesson08.bo.BookingBO;
 import com.majon.spring.lesson08.model.Booking;
@@ -48,6 +52,7 @@ public class BookingController {
 	}
 	
 	@PostMapping("/validation_check")
+	@ResponseBody
 	public Map<String,String> validationCheck(
 			@RequestParam("name")String name,
 			@RequestParam("date")Date date,
@@ -69,6 +74,61 @@ public class BookingController {
 		return result;
 		
 				
+	}
+	
+	@GetMapping("/delete_booking")
+	@ResponseBody
+	public Map<String,String>deleteBooking(@RequestParam("id")int id){
+		
+		int count = bookingBO.deleteBooking(id);
+		
+		Map<String,String>result = new HashMap<>();
+		if(count == 1) {
+			result.put("result","success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+		
+	}
+	
+	@PostMapping("/lookup")
+	@ResponseBody
+	public Map<String,Object>lookupBooking(
+			@RequestParam("name") String name
+			,@RequestParam("phoneNumber") String phoneNumber){
+		
+		boolean bool = bookingBO.doesExists(name, phoneNumber);
+		
+		Map<String,Object>result = new HashMap<>();
+		
+		Booking booking = new Booking();
+		
+		booking = bookingBO.getExistingBooking(name, phoneNumber);
+		
+		Date dateObject = booking.getDate();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+		String dateToString = formatter.format(dateObject);
+
+
+
+		출처: https://nota.tistory.com/50 [nota's story]
+		
+		if(bool) {
+			result.put("name", booking.getName());
+			result.put("date", dateToString);
+			result.put("day", booking.getDay());
+			result.put("headcount", booking.getHeadcount());
+			result.put("state", booking.getState());
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+		
 	}
 	
 	

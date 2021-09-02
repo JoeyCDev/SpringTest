@@ -67,7 +67,7 @@
 	            					</c:otherwise>
 	            				</c:choose>
 	            				
-	            				<td><button type="button" class="btn btn-danger">삭제</button></td>
+	            				<td><button type="button" class="btn btn-danger deleteBtn" data-booking-id="${booking.id }">삭제</button></td>
 	            			</tr>
 	            			</c:forEach>
 	            		</tbody>
@@ -77,6 +77,36 @@
           	<jsp:include page = "/lesson08-tmp/jsp/footer.jsp"/>
             
     </div>
+    
+    <script>
+    
+    	$(document).ready(function(){
+    		
+    		$(".deleteBtn").on("click",function(){
+    			
+    			var id = $(this).data("booking-id");
+    			
+    			$.ajax({
+    				
+    				type:"get",
+    				url:"/lesson08/delete_booking",
+    				data:{"id":id},
+    				success:function(data){
+    					if(data.result == "success"){
+    						location.href= "/lesson08/view_booking_list";
+    					}else{
+    						alert("삭제실패");
+    					}
+    				},
+    				error:function(e){
+    					alert("error");
+    				}
+    				
+    			});
+    		});
+    		
+    	});
+    </script>
 
 </body>
 </html>

@@ -32,6 +32,7 @@
  				,`day`
  				,`date`
  				,`phoneNumber`
+ 				,`state`
  				,`createdAt`
  				,`updatedAt`
  			)VALUES
@@ -41,6 +42,7 @@
  				,#{day}
  				,#{date}
  				,#{phoneNumber}
+ 				,'대기중'
  				,now()
  				,now()
  			
@@ -48,5 +50,48 @@
  			
  	
  	</insert>
+ 	
+ 	<delete id="deleteBooking" parameterType="int">
+ 	
+ 		DELETE FROM
+ 			`booking`
+ 		WHERE
+ 			`id` = #{id}
+ 	
+ 	</delete>
+ 	
+ 	<select id="countExistingBooking" resultType="int">
+ 	
+ 		SELECT 
+ 			count(*)
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 			 AND
+ 			 `phoneNumber` = #{phoneNumber}
+ 	
+ 	</select>
+ 	
+ 	<select id="selectExistingBooking" resultType="com.majon.spring.lesson08.model.Booking">
+ 	
+ 	SELECT
+ 			`id`
+ 			,`name`
+ 			,`headcount`
+ 			,`day`
+ 			,`date`
+ 			,`phoneNumber`
+ 			,`state`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 			 AND
+ 			 `phoneNumber` = #{phoneNumber}
+ 	
+ 	</select>
  
  </mapper>
