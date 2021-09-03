@@ -82,16 +82,10 @@
         		   url:"/lesson08/lookup",
         		   data:{"name":name,"phoneNumber":phoneNumber},
         		   success:function(data){
-        			   if(data.result!="fail"){
-        				   alert(
-        						   "이름 : " + data.name + "\n"
-        						   + "날짜 : " + data.date + "\n"	
-        						   + "일수 : " + data.day + "\n"
-        						   + "인원 : " + data.headcount + "\n"
-        						   + "상태 : " + data.state
-        				   		);
-        			   }else{
+        			   if(data == null){
         				   alert("조회 결과가 없습니다");
+        			   }else{
+        				   alert(data);
         			   }
         		   },
         		   error:function(e){

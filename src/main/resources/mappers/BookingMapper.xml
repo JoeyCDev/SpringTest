@@ -60,19 +60,6 @@
  	
  	</delete>
  	
- 	<select id="countExistingBooking" resultType="int">
- 	
- 		SELECT 
- 			count(*)
- 		FROM
- 			`booking`
- 		WHERE
- 			`name` = #{name}
- 			 AND
- 			 `phoneNumber` = #{phoneNumber}
- 	
- 	</select>
- 	
  	<select id="selectExistingBooking" resultType="com.majon.spring.lesson08.model.Booking">
  	
  	SELECT

@@ -15,15 +15,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+<!--  datepicker -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 <!-- stylesheet -->
 <link rel="stylesheet" href="/lesson08-tmp/style.css" type="text/css">
@@ -42,7 +38,7 @@
             		</div>
             		<div class="label-input mb-3">
             		<label>예약날짜</label>
-            		<input type="date"  id="datepicker" <%-- id="dateInput" --%> class="form-control">
+            		<input type="text"  id="datepicker" <%-- id="dateInput" --%> class="form-control">
             		</div>
             		<div class="label-input mb-3">
             		<label>숙박일수</label>
@@ -76,7 +72,8 @@
     		$("#bookingBtn").on("click",function(){
     			
     			var name = $("#nameInput").val();
-        		var date = new Date($("#dateInput").val());
+        		//var date = new Date($("#dateInput").val());
+        		var date = new Date($("#datepicker").val());
         		var day = $("#dayInput").val();
         		var headcount = $("#headcountInput").val();
         		var phoneNumber = $("#phoneNumberInput").val();

@@ -1,6 +1,5 @@
 package com.majon.spring.lesson08;
 
-import static org.assertj.core.api.Assertions.from;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -95,38 +94,16 @@ public class BookingController {
 	
 	@PostMapping("/lookup")
 	@ResponseBody
-	public Map<String,Object>lookupBooking(
+	public Booking lookupBooking(
 			@RequestParam("name") String name
 			,@RequestParam("phoneNumber") String phoneNumber){
 		
-		boolean bool = bookingBO.doesExists(name, phoneNumber);
 		
-		Map<String,Object>result = new HashMap<>();
+		Booking booking = bookingBO.getExistingBooking(name, phoneNumber);
 		
-		Booking booking = new Booking();
+		return booking;
 		
-		booking = bookingBO.getExistingBooking(name, phoneNumber);
 		
-		Date dateObject = booking.getDate();
-
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-		String dateToString = formatter.format(dateObject);
-
-
-
-		
-		if(bool) {
-			result.put("name", booking.getName());
-			result.put("date", dateToString);
-			result.put("day", booking.getDay());
-			result.put("headcount", booking.getHeadcount());
-			result.put("state", booking.getState());
-		}else {
-			result.put("result", "fail");
-		}
-		
-		return result;
 		
 	}
 	
