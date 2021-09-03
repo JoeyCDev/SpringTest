@@ -76,16 +76,21 @@
         	   var name = $("#name").val();
         	   var phoneNumber = $("#phoneNumber").val();
         	   
+        	   
         	   $.ajax({
         		  
         		   type:"post",
         		   url:"/lesson08/lookup",
         		   data:{"name":name,"phoneNumber":phoneNumber},
         		   success:function(data){
-        			   if(data == null){
+        			   if(data.id == null){
         				   alert("조회 결과가 없습니다");
         			   }else{
-        				   alert(data);
+        				   alert("이름 : " + data.name + "\n" 
+        						   + "날짜 : " + dateToString(data.date); + "\n"
+        						   + "일수 : " + data.day + "\n"
+        						   + "인원 : " + data.headcount + "\n"
+        						   + "상태 : " + data.state + "\n");
         			   }
         		   },
         		   error:function(e){
@@ -96,6 +101,28 @@
         	
         	   
            });
+           
+           function dateToString(date){
+        	   var dd = date.getDate();
+        	   var mm = date.getMonth()+1;
+        	   var yyyy = date.getFullYear();
+        	   
+        	   if(dd<10){
+        		   dd="0"+dd;
+        	   }
+        	   if(mm<10){
+        		   mm="0"+mm;
+        	   }
+        	   
+        	   
+        	   dd = dd.toString();
+        	   mm = mm.toString();
+        	   yyyy = yyyy.toString();
+        	   
+        	   var newDate = yyyy+"-"+mm+"-"+dd;
+        	   return newDate;
+        	   
+           }
            
 		           var bannerList = ["/lesson08-tmp/images/test06_banner1.jpg", "/lesson08-tmp/images/test06_banner2.jpg", "/lesson08-tmp/images/test06_banner3.jpg", "/lesson08-tmp/images/test06_banner4.jpg"];
 		           var currentImageIndex = 0;

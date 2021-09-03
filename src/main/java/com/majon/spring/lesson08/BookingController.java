@@ -99,9 +99,7 @@ public class BookingController {
 			,@RequestParam("phoneNumber") String phoneNumber){
 		
 		
-		Booking booking = bookingBO.getExistingBooking(name, phoneNumber);
-		
-		return booking;
+		return bookingBO.getExistingBooking(name, phoneNumber);
 		
 		
 		
