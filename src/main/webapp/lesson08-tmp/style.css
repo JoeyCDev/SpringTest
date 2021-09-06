@@ -46,3 +46,7 @@ address {font-size: 12px; color:gray;}
 	margin:auto; 
 	width:50%;
 }
+
+.main-logo:link{
+	text-decoration:none;
+}

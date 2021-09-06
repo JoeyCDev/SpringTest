@@ -71,12 +71,12 @@
     		
     		$("#bookingBtn").on("click",function(){
     			
-    			var name = $("#nameInput").val();
+    			var name = $("#nameInput").val().trim();
         		//var date = new Date($("#dateInput").val());
         		var date = new Date($("#datepicker").val());
-        		var day = $("#dayInput").val();
-        		var headcount = $("#headcountInput").val();
-        		var phoneNumber = $("#phoneNumberInput").val();
+        		var day = $("#dayInput").val().trim();
+        		var headcount = $("#headcountInput").val().trim();
+        		var phoneNumber = $("#phoneNumberInput").val().trim();
         		
     
     			
@@ -92,8 +92,17 @@
     				alert("숙박일수를 입력하세요");
     				return;
     			}
+    			if(isNaN(day)){
+    				alert("숙발일수에 숫자만 입력하세요");
+    				return;
+    			}
+    			
     			if(headcount==null||headcount==""){
     				alert("숙박인원을 입력하세요");
+    				return;
+    			}
+    			if(isNaN(headcount)){
+    				alert("숙박인원에 숫자만 입력하세요");
     				return;
     			}
     			if(phoneNumber==null||phoneNumber==""){

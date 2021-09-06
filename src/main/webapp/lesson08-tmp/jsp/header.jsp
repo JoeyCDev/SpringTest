@@ -10,7 +10,7 @@
 
 
 <header class="mt-4">
-                <div class="text-center display-4 ">통나무 팬션</div>
+                <div class="text-center display-4 "><a href="/lesson08/view_booking_main" class="main-logo text-dark">통나무 팬션</a></div>
                 <nav class="mt-4">
                     <ul class="nav nav-fill">
                         <li class="nav-item"><a class="nav-link" href="#">팬션소개</a></li>

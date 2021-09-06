@@ -22,7 +22,7 @@ public class BookingBO {
 	}
 	
 	public int addBooking(String name, Date date, int day, int headcount, String phoneNumber) {
-		return bookingDAO.addBooking(name, date, day, headcount, phoneNumber);
+		return bookingDAO.addBooking(name, date, day, headcount, phoneNumber,"대기중");
 	}
 	
 	public int deleteBooking(int id) {
